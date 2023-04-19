@@ -15,13 +15,8 @@ function getSeason(date) {
   if (arguments.length == 0) {
     return 'Unable to determine the time of year!';
   }
-  
-  try {
-    date.getUTCDate();
-  } catch (err) {
-    throw Error("Invalid date!");
-  } 
-  if (!(date instanceof Date)) {
+   
+  if (!(date instanceof Date) || date.hasOwnProperty('getMonth')) {
     throw Error("Invalid date!");
   }
   try {
